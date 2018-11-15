@@ -10,11 +10,14 @@ using System.Windows.Forms;
 
 namespace TubeQualityControl
 {
-    public partial class Form1 : Form
+    public partial class MainFrm : Form
     {
-        public Form1()
+        public MainFrm()
         {
             InitializeComponent();
+            MessageBox.Show(Octave.OctaveHandler.Invoke());
         }
+
+
     }
 }
