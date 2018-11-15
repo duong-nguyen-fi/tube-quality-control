@@ -21,5 +21,11 @@ namespace TubeQualityControl.Entity
             SuggestPoints = suggestPoints;
             MeasurePoints = new List<MeasurePoint>();
         }
+
+        public override string ToString()
+        {
+            return string.Format("Name: {0} - Actual Point: {1}",Name,MeasurePoints.Count);
+
+        }
     }
 }
