@@ -11,14 +11,14 @@ namespace TubeQualityControl.Entity
     {
         public string Name { get; set; }
 
-        public int Suggest_points { get; set; }
+        public int SuggestPoints { get; set; }
 
         public List<MeasurePoint> MeasurePoints { get; set; }
 
-        public Part(string name, int suggest_points)
+        public Part(string name, int suggestPoints)
         {
             Name = name;
-            Suggest_points = suggest_points;
+            SuggestPoints = suggestPoints;
             MeasurePoints = new List<MeasurePoint>();
         }
     }
