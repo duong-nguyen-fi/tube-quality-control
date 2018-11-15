@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TubeQualityControl.Octave
 {
-    class OctaveHandler
+    public class OctaveHandler
     {
         public static string Invoke()
         {
