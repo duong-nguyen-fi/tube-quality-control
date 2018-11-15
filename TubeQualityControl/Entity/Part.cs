@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace TubeQualityControl.Entity
 {
-    
     class Part
     {
         public string Name { get; set; }
@@ -27,5 +26,10 @@ namespace TubeQualityControl.Entity
             return string.Format("Name: {0} - Actual Point: {1}",Name,MeasurePoints.Count);
 
         }
+
+        public Part() { }
+
+     
+
     }
 }
