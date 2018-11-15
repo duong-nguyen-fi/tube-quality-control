@@ -59,15 +59,5 @@ namespace TubeQualityControl.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] joj_C4566ETP12BAREN_20180914 {
-            get {
-                object obj = ResourceManager.GetObject("joj_C4566ETP12BAREN_20180914", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
     }
 }
