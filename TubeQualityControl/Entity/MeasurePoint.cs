@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TubeQualityControl.Entity
 {
-    class MeasurePoint
+    public class MeasurePoint
     {
         public MeasurePoint(double x, double y, double z)
         {

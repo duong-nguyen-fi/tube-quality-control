@@ -6,16 +6,19 @@ using System.Threading.Tasks;
 
 namespace TubeQualityControl.Entity
 {
-    class Part
+    public class Part
     {
         public string Name { get; set; }
 
         public int SuggestPoints { get; set; }
 
+        public int Step { get; set; }
+
         public List<MeasurePoint> MeasurePoints { get; set; }
 
-        public Part(string name, int suggestPoints)
+        public Part(int step, string name, int suggestPoints)
         {
+            Step = step;
             Name = name;
             SuggestPoints = suggestPoints;
             MeasurePoints = new List<MeasurePoint>();
@@ -23,7 +26,7 @@ namespace TubeQualityControl.Entity
 
         public override string ToString()
         {
-            return string.Format("Name: {0} - Actual Point: {1}",Name,MeasurePoints.Count);
+            return String.Format("Name: {0} - Step: {2} - Suggest Point: {3} - Actual Point: {1}",Name,MeasurePoints.Count, Step, SuggestPoints);
 
         }
 
