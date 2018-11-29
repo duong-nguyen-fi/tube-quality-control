@@ -54,6 +54,18 @@
     <Compile Include="Forms\MeasureFrm.Designer.cs">
       <DependentUpon>MeasureFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PlaneAorB.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\PlaneAorB.Designer.cs">
+      <DependentUpon>PlaneAorB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PlaneOrPipeFrm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\PlaneOrPipeFrm.Designer.cs">
+      <DependentUpon>PlaneOrPipeFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\WelcomeFrm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -72,6 +84,12 @@
     <Compile Include="XmlHandler\XmlWriter.cs" />
     <EmbeddedResource Include="Forms\MeasureFrm.resx">
       <DependentUpon>MeasureFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PlaneAorB.resx">
+      <DependentUpon>PlaneAorB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PlaneOrPipeFrm.resx">
+      <DependentUpon>PlaneOrPipeFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\WelcomeFrm.resx">
       <DependentUpon>WelcomeFrm.cs</DependentUpon>
