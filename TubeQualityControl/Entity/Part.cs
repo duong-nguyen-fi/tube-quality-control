@@ -24,6 +24,13 @@ namespace TubeQualityControl.Entity
             MeasurePoints = new List<MeasurePoint>();
         }
 
+        public Part(int step, string name)
+        {
+            Step = step;
+            Name = name;
+            MeasurePoints = new List<MeasurePoint>();
+        }
+
         public override string ToString()
         {
             return String.Format("Name: {0} - Step: {2} - Suggest Point: {3} - Actual Point: {1}",Name,MeasurePoints.Count, Step, SuggestPoints);
