@@ -60,6 +60,12 @@
     <Compile Include="Forms\PlaneAorB.Designer.cs">
       <DependentUpon>PlaneAorB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PlaneMeasureFrm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\PlaneMeasureFrm.Designer.cs">
+      <DependentUpon>PlaneMeasureFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\PlaneOrPipeFrm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -87,6 +93,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PlaneAorB.resx">
       <DependentUpon>PlaneAorB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PlaneMeasureFrm.resx">
+      <DependentUpon>PlaneMeasureFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PlaneOrPipeFrm.resx">
       <DependentUpon>PlaneOrPipeFrm.cs</DependentUpon>

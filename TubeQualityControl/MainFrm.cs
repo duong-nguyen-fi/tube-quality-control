@@ -94,18 +94,27 @@ namespace TubeQualityControl
             }
             else if (selection.Equals("Plane"))
             {
-                var planeAB = new PlaneAorB();
-                planeAB.NextBtnHandler += PlaneAB_NextBtnHandler;
+                var planeAb = new PlaneAorB();
+                planeAb.NextBtnHandler += PlaneAB_NextBtnHandler;
                 panel1.Controls.Remove(sender as UserControl);
-                panel1.Controls.Add(planeAB);
+                panel1.Controls.Add(planeAb);
                 UpdateStep(6);
             }
         }
 
         private void PlaneAB_NextBtnHandler(object sender, EventArgs e)
         {
-            var selection = (sender as PlaneAorB).Selection;
+            var planeAb = sender as PlaneAorB;
+
+            var selection = planeAb.Selection;
             Debug.WriteLine("Selection: " + selection);
+
+            var planMeasureFrm = new PlaneMeasureFrm();
+
+            panel1.Controls.Remove(sender as UserControl);
+            panel1.Controls.Add(planMeasureFrm);
+
+
         }
 
         private void MeasureFrm1_NextBtnHandler(object sender, EventArgs e)
