@@ -48,7 +48,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::TubeQualityControl.Properties.Resources._default;
+            this.pictureBox1.Image = global::TubeQualityControl.Properties.Resources.pipe;
             this.pictureBox1.Location = new System.Drawing.Point(227, 109);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(313, 153);
@@ -134,6 +134,7 @@
             this.button3.TabIndex = 8;
             this.button3.Text = "Finish";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // panel2
             // 
@@ -163,7 +164,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 63);
             this.label2.TabIndex = 3;
-            this.label2.Text = "5";
+            this.label2.Text = "1";
             // 
             // label4
             // 

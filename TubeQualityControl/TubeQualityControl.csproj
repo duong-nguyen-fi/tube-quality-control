@@ -133,6 +133,18 @@
     <None Include="Resources\default.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\pipe.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\pipe_hole.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\pipe_small_hole.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\planeAB.PNG" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="res\default.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

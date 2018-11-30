@@ -31,10 +31,10 @@
             this.lbDes = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lbSuggest = new System.Windows.Forms.Label();
             this.lbActual = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.lbSuggest = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -50,10 +50,10 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::TubeQualityControl.Properties.Resources._default;
+            this.pictureBox1.Image = global::TubeQualityControl.Properties.Resources.pipe;
             this.pictureBox1.Location = new System.Drawing.Point(226, 127);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(48, 48);
+            this.pictureBox1.Size = new System.Drawing.Size(313, 153);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -67,6 +67,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(135, 101);
             this.panel1.TabIndex = 2;
+            // 
+            // lbSuggest
+            // 
+            this.lbSuggest.AutoSize = true;
+            this.lbSuggest.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSuggest.Location = new System.Drawing.Point(46, 23);
+            this.lbSuggest.Name = "lbSuggest";
+            this.lbSuggest.Size = new System.Drawing.Size(72, 63);
+            this.lbSuggest.TabIndex = 4;
+            this.lbSuggest.Text = "/3";
             // 
             // lbActual
             // 
@@ -91,6 +101,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button2.Location = new System.Drawing.Point(613, 344);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(78, 33);
@@ -98,16 +109,6 @@
             this.button2.Text = "Next";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // lbSuggest
-            // 
-            this.lbSuggest.AutoSize = true;
-            this.lbSuggest.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSuggest.Location = new System.Drawing.Point(46, 23);
-            this.lbSuggest.Name = "lbSuggest";
-            this.lbSuggest.Size = new System.Drawing.Size(72, 63);
-            this.lbSuggest.TabIndex = 4;
-            this.lbSuggest.Text = "/3";
             // 
             // MeasureFrm
             // 
