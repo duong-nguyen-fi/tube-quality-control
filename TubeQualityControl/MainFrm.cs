@@ -18,7 +18,7 @@ namespace TubeQualityControl
         private WelcomeFrm welcome;
         private MeasureFrm measureFrm1;
         private List<Part> allParts;
-        private int step = 1;
+        
 
         private Dictionary<int, UserControl> formDictionary = new Dictionary<int, UserControl>();
         public MainFrm()
@@ -31,6 +31,9 @@ namespace TubeQualityControl
             Part part4 = new Part(4,"PHOLEB", 3);
 
             allParts = new List<Part> {part1, part2, part3, part4};
+
+            progressBar1.Maximum = 6;
+            progressBar1.Minimum = 0;
 /*
             Part part5;
             bool pipeOption = false;
@@ -50,61 +53,130 @@ namespace TubeQualityControl
                 }
             }
 */
-            progressBar1.Maximum = 120;
-            progressBar1.Minimum = 0;
+            
 
             welcome = new WelcomeFrm();
             formDictionary.Add(0,welcome);
             panel1.Controls.Add(welcome);
             welcome.StartBtnHandler += Welcome_StartBtnHandler;
+
+            //4 only meant for first 4 steps - use step count as dictionary key
             foreach (var part in allParts)
             {
                 measureFrm1 = new MeasureFrm(part.Name, part);
                 formDictionary.Add(part.Step,measureFrm1);
-                measureFrm1.NextBtnHandler +=(sender,e) => MeasureFrm1_NextBtnHandler(sender, e, part);
+                measureFrm1.NextBtnHandler += MeasureFrm1_NextBtnHandler;
             }
 
-            foreach (var pair in formDictionary)
-            {
-                var value = pair.Value;
-                if (value is MeasureFrm)
-                    Debug.WriteLine((value as MeasureFrm)._Part);
-            }
+            // init pipeOrPlane selection frm - form5
+            PlaneOrPipeFrm planeOrPipeFrm = new PlaneOrPipeFrm();
+            formDictionary.Add(5, planeOrPipeFrm);
+            planeOrPipeFrm.NextBtnHandler += PlaneOrPipeFrm_NextBtnHandler;
 
-            //MessageBox.Show(Octave.OctaveHandler.Invoke());
+           
         }
 
-        private void MeasureFrm1_NextBtnHandler(object sender, EventArgs e, Part part)
+        private void PlaneOrPipeFrm_NextBtnHandler(object sender, EventArgs e)
         {
-            
-            
-            if (step < formDictionary.Count-1)
+            string selection = (sender as PlaneOrPipeFrm).Selection;
+            Debug.WriteLine("Selection: "+ selection);
+
+            if (selection.Equals("Pipe"))
             {
-                step++;
-                lbStepCount.Text = string.Format("Step {0}/6", step);
-                int index = allParts.IndexOf(part);
-                Debug.WriteLine("Part: " + part + "index:" + index);
-                panel1.Controls.Remove(formDictionary[index + 1]);
-                panel1.Controls.Add(formDictionary[index + 2]);
-                progressBar1.Value = 120 / 6 * step;
+                Part part5 = new Part(6, "PIPE", 3);
+                allParts.Add(part5);
+                measureFrm1 = new MeasureFrm(part5.Name, part5);
+                measureFrm1.NextBtnHandler += MeasureFrm1_NextBtnHandler;
+                formDictionary.Add(6, measureFrm1);
+                panel1.Controls.Remove(sender as UserControl);
+                panel1.Controls.Add(measureFrm1);
+                UpdateStep(6);
+            }
+            else if (selection.Equals("Plane"))
+            {
+                var planeAb = new PlaneAorB();
+                planeAb.NextBtnHandler += PlaneAB_NextBtnHandler;
+                panel1.Controls.Remove(sender as UserControl);
+                panel1.Controls.Add(planeAb);
+                UpdateStep(6);
+            }
+        }
+
+        private void PlaneAB_NextBtnHandler(object sender, EventArgs e)
+        {
+            var planeAb = sender as PlaneAorB;
+
+            var selection = planeAb.Selection;
+            Debug.WriteLine("Selection: " + selection);
+
+            var planMeasureFrm = new PlaneMeasureFrm();
+
+            panel1.Controls.Remove(sender as UserControl);
+            panel1.Controls.Add(planMeasureFrm);
+
+
+        }
+
+        private void MeasureFrm1_NextBtnHandler(object sender, EventArgs e)
+        {
+            var oldFrm = sender as MeasureFrm;
+
+            //get index of the clicked form
+            int index = formDictionary.FirstOrDefault(x => x.Value == oldFrm ).Key;
+            Debug.WriteLine("\n -------- \nClicked Part: " + oldFrm._Part + "index:" + index);
+
+
+            // check if next index available
+            if (formDictionary.ContainsKey(index + 1))
+            {
+                UserControl newFormControl;
+                formDictionary.TryGetValue(index + 1, out newFormControl);
+                if (newFormControl is MeasureFrm)
+                {
+                    MeasureFrm newFrm = newFormControl as MeasureFrm;
+                    int step = newFrm._Part.Step;
+
+                    Debug.WriteLine("Next Part: " + newFrm._Part + "step:" + step);
+                    UpdateStep(step);
+                }
+
+                if (newFormControl is PlaneOrPipeFrm)
+                {
+                    UpdateStep(5);
+                }
+
+                panel1.Controls.Remove(oldFrm);
+                panel1.Controls.Add(newFormControl);
+
+                
             }
             else
             {
-                
+                Debug.WriteLine("No next part");
             }
+            
+
+            
+
         }
 
+        //start button - first form
         private void Welcome_StartBtnHandler(object sender, EventArgs e)
         {
             panel1.Controls.Remove(welcome);
             panel1.Controls.Add(formDictionary[1]);
-            lbStepCount.Text = string.Format("Step {0}/6", step);
-
+            UpdateStep(1);
         }
 
         private void statusStrip2_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
+        }
+
+        private void UpdateStep(int step)
+        {
+            progressBar1.Value = step;
+            lbStepCount.Text = string.Format("Step {0}/6", step);
         }
     }
 }

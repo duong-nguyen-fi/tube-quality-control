@@ -9,12 +9,12 @@ using TubeQualityControl.Entity;
 
 namespace TubeQualityControl.XmlHandler
 {
-    class XmlWriter
+    public class XmlWriter
     {
 
-        public static string WriteXml(Part part)
+        public static string WriteXml(List<Part> parts)
         {
-            string filePathName = @"U:\C#\TubeQualityControl.Entity\tube.txt";
+            string filePathName = @"U:\C#\tube.xml";
             //Here we use the XmlTextWriter to open a new XML file
             // FileStream filestream = new FileStream(filePathName, FileMode.Append);
             XmlTextWriter xmlTextWriter = new XmlTextWriter(filePathName, System.Text.Encoding.UTF8);
@@ -25,14 +25,25 @@ namespace TubeQualityControl.XmlHandler
             xmlTextWriter.WriteStartDocument();
             //Here we write the root elemnt
             xmlTextWriter.WriteStartElement("root");
+
             //Here we end the root element
             xmlTextWriter.WriteEndElement();
             //Here we end the document element
             xmlTextWriter.WriteEndDocument();
             //Here we flush and close the stream
 
+            
+
             //xmlTextWriter.Flush();
             xmlTextWriter.Close();
+
+            foreach (var part in parts)
+            {
+                AppendElement(part);
+            }
+
+            
+            
             FileInfo fileInfo = new FileInfo(filePathName);
 
             //Here we return the file path and its length. 
@@ -55,7 +66,7 @@ namespace TubeQualityControl.XmlHandler
         //This method appends new elements to the XML tree.
         public static string AppendElement(Part part)
         {
-            string filePathName = @"U:\C#\TubeQualityControl.Entity\tube.txt";
+            string filePathName = @"U:\C#\tube.xml";
             //Reading and adding new data
             XmlTextReader xmlTextReader = new XmlTextReader(filePathName);
             //Does not return any whitespace node
@@ -64,8 +75,8 @@ namespace TubeQualityControl.XmlHandler
             XmlDocument xmlDocument = new XmlDocument();
             xmlDocument.Load(xmlTextReader);
             xmlTextReader.Close();
-            XmlElement newTubeElement = xmlDocument.CreateElement("data");
-            newTubeElement.SetAttribute("type",part.Name);
+            XmlElement newTubeElement = xmlDocument.CreateElement("part");
+            newTubeElement.SetAttribute("name",part.Name);
            // XmlElement newDataElement = xmlDocument.CreateElement("point");
             //newTubeElement.AppendChild(newDataElement);
 
@@ -87,7 +98,24 @@ namespace TubeQualityControl.XmlHandler
             // xmlDocument.GetElementById("employees").AppendChild(newEmpElement);
 
             //Here we would add the new child to the end of the root node
+            foreach (var p in part.MeasurePoints) // p is point
+            {
+                //AppendElement(point);
+                XmlElement newDataElement = xmlDocument.CreateElement("point");
+                XmlElement newXElement = xmlDocument.CreateElement("X");
+                newXElement.InnerText = p.X.ToString();
+                newDataElement.AppendChild(newXElement);
+                XmlElement newYElement = xmlDocument.CreateElement("Y");
+                newYElement.InnerText = p.Y.ToString();
+                newDataElement.AppendChild(newYElement);
+                XmlElement newZElement = xmlDocument.CreateElement("Z");
+                newZElement.InnerText = p.Z.ToString();
+                newDataElement.AppendChild(newZElement);
+                newTubeElement.AppendChild(newDataElement);
+            }
+
             rootNode.AppendChild(newTubeElement);
+
             xmlDocument.Save(filePathName);
             return "Add child element successfully";
           // return GetFileInfo(filePathName);
@@ -97,7 +125,7 @@ namespace TubeQualityControl.XmlHandler
 
         public static string AppendElement(MeasurePoint p)
         {
-            string filePathName = @"U:\C#\TubeQualityControl.Entity\tube.txt";
+            string filePathName = @"U:\C#\tube.xml";
             //Reading and adding new data
             XmlTextReader xmlTextReader = new XmlTextReader(filePathName);
             //Does not return any whitespace node

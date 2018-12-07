@@ -8,10 +8,11 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>TubeQualityControl</RootNamespace>
     <AssemblyName>TubeQualityControl</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -54,6 +55,24 @@
     <Compile Include="Forms\MeasureFrm.Designer.cs">
       <DependentUpon>MeasureFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PlaneAorB.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\PlaneAorB.Designer.cs">
+      <DependentUpon>PlaneAorB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PlaneMeasureFrm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\PlaneMeasureFrm.Designer.cs">
+      <DependentUpon>PlaneMeasureFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PlaneOrPipeFrm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\PlaneOrPipeFrm.Designer.cs">
+      <DependentUpon>PlaneOrPipeFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\WelcomeFrm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -72,6 +91,15 @@
     <Compile Include="XmlHandler\XmlWriter.cs" />
     <EmbeddedResource Include="Forms\MeasureFrm.resx">
       <DependentUpon>MeasureFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PlaneAorB.resx">
+      <DependentUpon>PlaneAorB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PlaneMeasureFrm.resx">
+      <DependentUpon>PlaneMeasureFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PlaneOrPipeFrm.resx">
+      <DependentUpon>PlaneOrPipeFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\WelcomeFrm.resx">
       <DependentUpon>WelcomeFrm.cs</DependentUpon>
@@ -104,6 +132,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\default.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\pipe.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\pipe_hole.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\pipe_small_hole.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\planeAB.PNG" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\default.PNG" />

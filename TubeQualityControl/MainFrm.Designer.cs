@@ -47,17 +47,17 @@
             // 
             this.statusStrip1.AutoSize = false;
             this.statusStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.statusStrip1.Location = new System.Drawing.Point(-8, 472);
+            this.statusStrip1.Location = new System.Drawing.Point(-8, 487);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(852, 48);
+            this.statusStrip1.Size = new System.Drawing.Size(852, 33);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(-8, 472);
+            this.progressBar1.Location = new System.Drawing.Point(-8, 487);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(178, 48);
+            this.progressBar1.Size = new System.Drawing.Size(178, 33);
             this.progressBar1.TabIndex = 2;
             // 
             // statusStrip2
