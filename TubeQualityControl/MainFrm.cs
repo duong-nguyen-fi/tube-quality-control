@@ -109,7 +109,7 @@ namespace TubeQualityControl
             var selection = planeAb.Selection;
             Debug.WriteLine("Selection: " + selection);
 
-            var planMeasureFrm = new PlaneMeasureFrm();
+            var planMeasureFrm = new PlaneMeasureFrm("MEASURE PARTS", new Part(6, "PLANE", 5));
 
             panel1.Controls.Remove(sender as UserControl);
             panel1.Controls.Add(planMeasureFrm);

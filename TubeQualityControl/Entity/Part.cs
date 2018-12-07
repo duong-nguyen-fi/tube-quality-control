@@ -39,7 +39,23 @@ namespace TubeQualityControl.Entity
 
         public Part() { }
 
-     
+
+        public void Reset()
+        {
+            MeasurePoints = new List<MeasurePoint>();
+            
+        }
+
+        public bool AddPoint(MeasurePoint point)
+        {
+            if (!MeasurePoints.Contains(point))
+            {
+                MeasurePoints.Add(point);
+                return true;
+            }
+
+            return false;
+        }
 
     }
 }
