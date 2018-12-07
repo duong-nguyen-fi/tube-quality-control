@@ -12,9 +12,11 @@ namespace TubeQualityControl.XmlHandler
     public class XmlWriter
     {
 
+        static string filePathName = @"D:\tube.xml";
+
         public static string WriteXml(List<Part> parts)
         {
-            string filePathName = @"U:\C#\tube.xml";
+             
             //Here we use the XmlTextWriter to open a new XML file
             // FileStream filestream = new FileStream(filePathName, FileMode.Append);
             XmlTextWriter xmlTextWriter = new XmlTextWriter(filePathName, System.Text.Encoding.UTF8);
@@ -66,7 +68,6 @@ namespace TubeQualityControl.XmlHandler
         //This method appends new elements to the XML tree.
         public static string AppendElement(Part part)
         {
-            string filePathName = @"U:\C#\tube.xml";
             //Reading and adding new data
             XmlTextReader xmlTextReader = new XmlTextReader(filePathName);
             //Does not return any whitespace node
@@ -125,7 +126,6 @@ namespace TubeQualityControl.XmlHandler
 
         public static string AppendElement(MeasurePoint p)
         {
-            string filePathName = @"U:\C#\tube.xml";
             //Reading and adding new data
             XmlTextReader xmlTextReader = new XmlTextReader(filePathName);
             //Does not return any whitespace node

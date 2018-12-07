@@ -7,15 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TubeQualityControl.Entity;
 using System.Diagnostics;
 
 namespace TubeQualityControl.Forms
 {
     public partial class PlaneMeasureFrm : UserControl
     {
-        public PlaneMeasureFrm()
+        public Part _Part { get; set; }
+
+        public PlaneMeasureFrm(string description, Part part)
         {
             InitializeComponent();
+            _Part = part;
+            lbDes.Text = description;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -30,7 +35,7 @@ namespace TubeQualityControl.Forms
             part1.MeasurePoints = points;
 
 
-            var part2 = new Entity.Part(6, "PLNA", 3);
+            var part2 = new Entity.Part(6, "PLNB", 3);
 
             List<Entity.MeasurePoint> points1 = new List<Entity.MeasurePoint>() { point1, point2};
             part2.MeasurePoints = points1;
@@ -46,5 +51,18 @@ namespace TubeQualityControl.Forms
 
             XmlHandler.XmlWriter.WriteXml(parts);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Are you sure you want to reset", "ARE YOU SURE?", MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (dr == DialogResult.Yes)
+            {
+                _Part.Reset();
+            }
+        }
+
+
     }
 }
