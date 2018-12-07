@@ -13,7 +13,7 @@ namespace TubeQualityControl.Entity
 
         public static string WriteXML(Part part)
         {
-            string filePathName = @"U:\C#\TubeQualityControl.Entity\tube.txt";
+            string filePathName = @"U:\C#\TubeQualityControl.Entity\tube.xml";
             //Here we use the XmlTextWriter to open a new XML file
             // FileStream filestream = new FileStream(filePathName, FileMode.Append);
             XmlTextWriter xmlTextWriter = new XmlTextWriter(filePathName, System.Text.Encoding.UTF8);
