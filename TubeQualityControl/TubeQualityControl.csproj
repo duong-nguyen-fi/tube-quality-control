@@ -49,6 +49,36 @@
   <ItemGroup>
     <Compile Include="Entity\MeasurePoint.cs" />
     <Compile Include="Entity\Part.cs" />
+    <Compile Include="Forms\MeasureFrm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\MeasureFrm.Designer.cs">
+      <DependentUpon>MeasureFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PlaneAorB.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\PlaneAorB.Designer.cs">
+      <DependentUpon>PlaneAorB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PlaneMeasureFrm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\PlaneMeasureFrm.Designer.cs">
+      <DependentUpon>PlaneMeasureFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PlaneOrPipeFrm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\PlaneOrPipeFrm.Designer.cs">
+      <DependentUpon>PlaneOrPipeFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\WelcomeFrm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\WelcomeFrm.Designer.cs">
+      <DependentUpon>WelcomeFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,22 +88,44 @@
     <Compile Include="Octave\OctaveHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< HEAD
     <Compile Include="XmlHandler\XmlReader.cs" />
     <Compile Include="XmlHandler\XmlWriter.cs" />
+=======
+    <Compile Include="XmlHandler\XmlWriter.cs" />
+    <EmbeddedResource Include="Forms\MeasureFrm.resx">
+      <DependentUpon>MeasureFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PlaneAorB.resx">
+      <DependentUpon>PlaneAorB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PlaneMeasureFrm.resx">
+      <DependentUpon>PlaneMeasureFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PlaneOrPipeFrm.resx">
+      <DependentUpon>PlaneOrPipeFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\WelcomeFrm.resx">
+      <DependentUpon>WelcomeFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFrm.resx">
+      <DependentUpon>MainFrm.cs</DependentUpon>
+    </EmbeddedResource>
+>>>>>>> d6cfc6418e3aa682a20d918e3465b67a4c6f4f71
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -84,7 +136,26 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Folder Include="Forms\" />
+=======
+    <None Include="Resources\default.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\pipe.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\pipe_hole.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\pipe_small_hole.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\planeAB.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\default.PNG" />
+>>>>>>> d6cfc6418e3aa682a20d918e3465b67a4c6f4f71
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

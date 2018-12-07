@@ -6,27 +6,56 @@ using System.Threading.Tasks;
 
 namespace TubeQualityControl.Entity
 {
-    class Part
+    public class Part
     {
         public string Name { get; set; }
 
-        public int Suggest_points { get; set; }
+        public int SuggestPoints { get; set; }
+
+        public int Step { get; set; }
 
         public List<MeasurePoint> MeasurePoints { get; set; }
 
-        public Part(string name, int suggest_points, List<MeasurePoint> MeasurePoints)
+        public Part(int step, string name, int suggestPoints)
         {
+            Step = step;
             Name = name;
-            Suggest_points = suggest_points;
+            SuggestPoints = suggestPoints;
             MeasurePoints = new List<MeasurePoint>();
+        }
+
+        public Part(int step, string name)
+        {
+            Step = step;
+            Name = name;
+            MeasurePoints = new List<MeasurePoint>();
+        }
+
+        public override string ToString()
+        {
+            return String.Format("Name: {0} - Step: {2} - Suggest Point: {3} - Actual Point: {1}",Name,MeasurePoints.Count, Step, SuggestPoints);
+
         }
 
         public Part() { }
 
-     
-      /*  public override String ToString() {
-            return Name + Suggest_points+ String.Join(",",MeasurePoints);
-           
-        }*/
+
+        public void Reset()
+        {
+            MeasurePoints = new List<MeasurePoint>();
+            
+        }
+
+        public bool AddPoint(MeasurePoint point)
+        {
+            if (!MeasurePoints.Contains(point))
+            {
+                MeasurePoints.Add(point);
+                return true;
+            }
+
+            return false;
+        }
+
     }
 }
