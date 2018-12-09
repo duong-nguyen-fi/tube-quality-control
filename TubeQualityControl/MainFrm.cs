@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,13 +19,13 @@ namespace TubeQualityControl
         private WelcomeFrm welcome;
         private MeasureFrm measureFrm1;
         private List<Part> allParts;
-        
+        public static string CurrentDir;
 
         private Dictionary<int, UserControl> formDictionary = new Dictionary<int, UserControl>();
         public MainFrm()
         {
             InitializeComponent();
-
+            CurrentDir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
             Part part1 = new Part(1,"PLNA", 3);
             Part part2 = new Part(2,"PHOLEA", 3);
             Part part3 = new Part(3,"PLNB", 3);
@@ -34,25 +35,8 @@ namespace TubeQualityControl
 
             progressBar1.Maximum = 6;
             progressBar1.Minimum = 0;
-/*
-            Part part5;
-            bool pipeOption = false;
-            if (pipeOption)
-            {
-                part5 = new Part(5,"PIPE", 3);
-                allParts.Add(part5);
-            }
-            else
-            {
-                int numOfHoles = 4;
 
-                for (int i = 1; i <= numOfHoles; i++)
-                {
-                    Part part = new Part(5,"CIR" + i, 3);
-                    allParts.Add(part);
-                }
-            }
-*/
+            Debug.WriteLine(CurrentDir);
             
 
             welcome = new WelcomeFrm();
@@ -76,6 +60,7 @@ namespace TubeQualityControl
            
         }
 
+        
         private void PlaneOrPipeFrm_NextBtnHandler(object sender, EventArgs e)
         {
             string selection = (sender as PlaneOrPipeFrm).Selection;

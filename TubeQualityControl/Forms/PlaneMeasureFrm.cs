@@ -50,6 +50,7 @@ namespace TubeQualityControl.Forms
                 Debug.WriteLine(point);
 
             XmlHandler.XmlWriter.WriteXml(parts);
+            Octave.OctaveHandler.Invoke();
         }
 
         private void button1_Click(object sender, EventArgs e)

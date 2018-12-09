@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <part name="PLNA">
+    <point>
+      <X>12</X>
+      <Y>52</Y>
+      <Z>22</Z>
+    </point>
+    <point>
+      <X>32</X>
+      <Y>59</Y>
+      <Z>222</Z>
+    </point>
+    <point>
+      <X>120</X>
+      <Y>124</Y>
+      <Z>233</Z>
+    </point>
+  </part>
+  <part name="PLNB">
+    <point>
+      <X>12</X>
+      <Y>52</Y>
+      <Z>22</Z>
+    </point>
+    <point>
+      <X>32</X>
+      <Y>59</Y>
+      <Z>222</Z>
+    </point>
+  </part>
+</root>

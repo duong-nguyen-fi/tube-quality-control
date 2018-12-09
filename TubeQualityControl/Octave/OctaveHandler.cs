@@ -29,8 +29,8 @@ namespace TubeQualityControl.Octave
             System.IO.StreamWriter myStreamWriter = process.StandardInput;
             //myStreamWriter.WriteLine("octave");
             //myStreamWriter.WriteLine("cd D:\\Temp");
-            myStreamWriter.WriteLine("pwd");
-            myStreamWriter.WriteLine("v1(2)"); 
+           // myStreamWriter.WriteLine("pwd");
+            myStreamWriter.WriteLine("main(2)"); 
             myStreamWriter.Close();
             string output = process.StandardOutput.ReadToEnd();
             process.WaitForExit();
