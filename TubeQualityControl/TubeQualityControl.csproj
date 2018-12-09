@@ -88,6 +88,10 @@
     <Compile Include="Octave\OctaveHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< HEAD
+    <Compile Include="XmlHandler\XmlReader.cs" />
+    <Compile Include="XmlHandler\XmlWriter.cs" />
+=======
     <Compile Include="XmlHandler\XmlWriter.cs" />
     <EmbeddedResource Include="Forms\MeasureFrm.resx">
       <DependentUpon>MeasureFrm.cs</DependentUpon>
@@ -107,6 +111,7 @@
     <EmbeddedResource Include="MainFrm.resx">
       <DependentUpon>MainFrm.cs</DependentUpon>
     </EmbeddedResource>
+>>>>>>> d6cfc6418e3aa682a20d918e3465b67a4c6f4f71
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -131,6 +136,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+    <Folder Include="Forms\" />
+=======
     <None Include="Resources\default.bmp" />
   </ItemGroup>
   <ItemGroup>
@@ -147,6 +155,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="res\default.PNG" />
+>>>>>>> d6cfc6418e3aa682a20d918e3465b67a4c6f4f71
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
