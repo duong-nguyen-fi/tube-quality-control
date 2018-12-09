@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -12,12 +13,12 @@ namespace TubeQualityControl.XmlHandler
     public class XmlWriter
     {
 
-        static string filePathName = @"D:\tube.xml";
+        static string filePathName = MainFrm.CurrentDir+"/res/tube.xml".Replace("/", Path.DirectorySeparatorChar+"");
 
         public static string WriteXml(List<Part> parts)
         {
 
-            
+            Debug.WriteLine("Writing xml to: "+ filePathName);
 
             //Here we use the XmlTextWriter to open a new XML file
             // FileStream filestream = new FileStream(filePathName, FileMode.Append);

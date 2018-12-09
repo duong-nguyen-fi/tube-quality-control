@@ -35,9 +35,9 @@ namespace TubeQualityControl.XmlHandler
                 }
             }
         }
-        public static void Main()
+        public static void Read()
         {
-            string filePath = @"U:\C#\tube.xml";
+            string filePath = MainFrm.CurrentDir + "/res/tube.xml".Replace("/", Path.DirectorySeparatorChar + "");
             try
             {
                 //Here we open the XML file
