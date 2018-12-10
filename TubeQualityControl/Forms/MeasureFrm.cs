@@ -85,6 +85,7 @@ namespace TubeQualityControl.Forms
             if (dr == DialogResult.Yes)
             {
                 _Part.Reset();
+                lbActual.Invoke(new Action(() => lbActual.Text = _Part.PointCount.ToString()));
             }
         }
 
