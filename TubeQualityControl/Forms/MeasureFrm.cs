@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TubeQualityControl.Entity;
+using TubeQualityControl.DbHandler;
+using System.Diagnostics;
 
 namespace TubeQualityControl.Forms
 {
@@ -16,6 +18,10 @@ namespace TubeQualityControl.Forms
         public event EventHandler NextBtnHandler;
 
         public Part _Part { get; set; }
+
+        DbService service;
+
+        bool serviceFlag = false;
 
         public MeasureFrm(string description, Part part)
         {
@@ -59,10 +65,14 @@ namespace TubeQualityControl.Forms
         private void BtnFinish_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Finished");
+            serviceFlag = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            serviceFlag = false;
+
+            Debug.WriteLine(_Part);
             if (this.NextBtnHandler != null)
                 this.NextBtnHandler(this, e);
         }
@@ -75,7 +85,38 @@ namespace TubeQualityControl.Forms
             if (dr == DialogResult.Yes)
             {
                 _Part.Reset();
+                lbActual.Invoke(new Action(() => lbActual.Text = _Part.PointCount.ToString()));
             }
+        }
+
+        public double GetRandomNumber(double minimum, double maximum)
+        {
+            Random random = new Random();
+            return random.NextDouble() * (maximum - minimum) + minimum;
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            lbActual.Text = "0";
+            Start_Service();
+        }
+
+        private void Start_Service()
+        {
+            bool newPoint = false;
+            serviceFlag = true;
+            service = new DbService();
+            service.Start();
+            service.NewDataReceived += (sender, e) =>
+            {
+                if (serviceFlag)
+                {
+                    newPoint = _Part.AddPoint(new MeasurePoint(GetRandomNumber(29.12, 120.12), GetRandomNumber(29.12, 120.12), GetRandomNumber(29.12, 120.12)));
+                    lbActual.Invoke(new Action(() => lbActual.Text = _Part.PointCount.ToString()));
+                }
+            };
+
+            
         }
     }
 }

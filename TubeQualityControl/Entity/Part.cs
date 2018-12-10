@@ -14,6 +14,11 @@ namespace TubeQualityControl.Entity
 
         public int Step { get; set; }
 
+        public int PointCount
+        {
+            get { return MeasurePoints.Count; }
+        }
+
         public List<MeasurePoint> MeasurePoints { get; set; }
 
         public Part(int step, string name, int suggestPoints)
@@ -37,7 +42,9 @@ namespace TubeQualityControl.Entity
 
         }
 
-        public Part() { }
+        public Part() {
+            MeasurePoints = new List<MeasurePoint>();
+        }
 
 
         public void Reset()
