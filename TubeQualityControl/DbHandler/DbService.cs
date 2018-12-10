@@ -13,7 +13,7 @@ namespace TubeQualityControl.DbHandler
         private int id = 0;
         DbHandler db;
         public event EventHandler NewDataReceived;
-
+        private System.Timers.Timer aTimer;
         public void Start()
         {
             db = new DbHandler();
@@ -21,7 +21,7 @@ namespace TubeQualityControl.DbHandler
             id = db.Find_Max_Id();
 
             //start timer
-            System.Timers.Timer aTimer = new System.Timers.Timer();
+            aTimer = new System.Timers.Timer();
             aTimer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
             aTimer.Interval = 1000;
             aTimer.Enabled = true;
@@ -44,8 +44,13 @@ namespace TubeQualityControl.DbHandler
                 id = currentMax;
             }
 
-            
+        }
 
+        public void Stop()
+        {
+           
+            aTimer.Stop();
+            aTimer.Enabled = false;
         }
 
 
