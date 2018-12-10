@@ -63,6 +63,7 @@
     <Compile Include="DbHandler\DbHandler.cs" />
     <Compile Include="DbHandler\DbService.cs" />
     <Compile Include="Entity\MeasurePoint.cs" />
+    <Compile Include="Entity\NewDataEventArgs.cs" />
     <Compile Include="Entity\Part.cs" />
     <Compile Include="Forms\MeasureFrm.cs">
       <SubType>UserControl</SubType>
