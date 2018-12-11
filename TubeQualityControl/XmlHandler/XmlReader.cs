@@ -1,64 +1,37 @@
 ﻿using System;
 using System.Xml;
 using System.IO;
+using TubeQualityControl.Entity;
+using System.Xml.Serialization;
+
 
 namespace TubeQualityControl.XmlHandler
 {
     class XmlReader
     {
-        private static void AddChildren(XmlNode xmlNode, int level)
+
+        public Part Deserialize<Part>(string input) where Part : class
         {
-            XmlNode childXmlNode;
-            //Here we speciy padding; th enumber of spaces based on the level in the XML tree
-            string pad = new string(' ', level * 3);
+            System.Xml.Serialization.XmlSerializer ser = new System.Xml.Serialization.XmlSerializer(typeof(Part));
 
-            Console.WriteLine(pad + xmlNode.Name + "(" + xmlNode.NodeType.ToString() + ": " + xmlNode.Value + ")");
-            //Here we extract possible attributes
-            if (xmlNode.NodeType == XmlNodeType.Element)
+            using (StringReader sr = new StringReader(input))
             {
-
-                XmlNamedNodeMap mapAttributes = xmlNode.Attributes;
-                for (int i = 0; i < mapAttributes.Count; i++)
-                {
-                    Console.WriteLine(pad + " " + mapAttributes.Item(i).Name + "=" + mapAttributes.Item(i).Value);
-                }
-
-            }
-            //Here we call recursively o all children of the current node
-            if (xmlNode.HasChildNodes)
-            {
-                childXmlNode = xmlNode.FirstChild;
-                while (childXmlNode != null)
-                {
-                    AddChildren(childXmlNode, level + 1);
-                    childXmlNode = childXmlNode.NextSibling;
-                }
+                return (Part)ser.Deserialize(sr);
             }
         }
-        public static void Read()
+
+        public string Serialize<Part>(Part ObjectToSerialize)
         {
-            string filePath = MainFrm.CurrentDir + "/res/tube.xml".Replace("/", Path.DirectorySeparatorChar + "");
-            try
+            XmlSerializer xmlSerializer = new XmlSerializer(ObjectToSerialize.GetType());
+
+            using (StringWriter textWriter = new StringWriter())
             {
-                //Here we open the XML file
-                XmlTextReader xmlTextReader = new XmlTextReader(filePath);
-                //Does not return any whitespace node
-                xmlTextReader.WhitespaceHandling = WhitespaceHandling.None;
-                //Here we load the file into memory
-                XmlDocument xmlDocument = new XmlDocument();
-                xmlDocument.Load(xmlTextReader);
-                //Here we get the document root nodeXmlNode xmlNode=
-                XmlNode xmlNode = xmlDocument.DocumentElement;
-                //Here we recursively walk through the node tree
-                AddChildren(xmlNode, 0);
-                //Heer we close the reader
-                xmlTextReader.Close();
-            }
-            catch (FileNotFoundException e)
-            {
-                Console.WriteLine(filePath + " was not found!");
+                xmlSerializer.Serialize(textWriter, ObjectToSerialize);
+                FileStream stream = new FileStream(@"U:\C#\tube.xml", FileMode.Open);
+                Part p = (Part)xmlSerializer.Deserialize(stream);
+                stream.Close();
+                return textWriter.ToString();
             }
         }
-    
-}
+    }
 }

@@ -29,7 +29,7 @@ namespace TubeQualityControl.XmlHandler
             //Here we write XML declaration
             xmlTextWriter.WriteStartDocument();
             //Here we write the root elemnt
-            xmlTextWriter.WriteStartElement("root");
+            xmlTextWriter.WriteStartElement("data");
 
             //Here we end the root element
             xmlTextWriter.WriteEndElement();
