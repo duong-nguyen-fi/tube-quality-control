@@ -2,36 +2,36 @@
 using System.Xml;
 using System.IO;
 using TubeQualityControl.Entity;
-using System.Xml.Serialization;
-
+using System.Collections.Generic;
 
 namespace TubeQualityControl.XmlHandler
 {
     class XmlReader
     {
+        static string filePathName = MainFrm.CurrentDir + "/res/tube.xml".Replace("/", Path.DirectorySeparatorChar + "");
 
-        public Part Deserialize<Part>(string input) where Part : class
+        public static string ReadXml(List<Part> parts)
         {
-            System.Xml.Serialization.XmlSerializer ser = new System.Xml.Serialization.XmlSerializer(typeof(Part));
-
-            using (StringReader sr = new StringReader(input))
+            XmlDocument xmldoc = new XmlDocument();
+            xmldoc.LoadXml(filePathName);
+            XmlNodeList nodeList = xmldoc.GetElementsByTagName("part");
+            string part = string.Empty;
+            foreach (XmlNode node in nodeList)
             {
-                return (Part)ser.Deserialize(sr);
+                if (node.InnerText.Contains("part"))
+                {
+                    List<MeasurePoint> points = new List<MeasurePoint>();
+                    Part p = new Part(node.Attributes["name"].Value, points);
+                    XmlNodeList nodelist = xmldoc.GetElementsByTagName("point");
+                    foreach (XmlNode n in nodelist)
+                    {
+                        points.Add(new MeasurePoint(Convert.ToDouble(n["x"].InnerText), Convert.ToDouble(n["y"].InnerText), Convert.ToDouble(n["z"].InnerText)));
+                    }
+                    return p.ponitsToString();
+                }
             }
+            return "read successfully";
         }
 
-        public string Serialize<Part>(Part ObjectToSerialize)
-        {
-            XmlSerializer xmlSerializer = new XmlSerializer(ObjectToSerialize.GetType());
-
-            using (StringWriter textWriter = new StringWriter())
-            {
-                xmlSerializer.Serialize(textWriter, ObjectToSerialize);
-                FileStream stream = new FileStream(@"U:\C#\tube.xml", FileMode.Open);
-                Part p = (Part)xmlSerializer.Deserialize(stream);
-                stream.Close();
-                return textWriter.ToString();
-            }
-        }
     }
 }
