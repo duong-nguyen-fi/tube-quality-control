@@ -29,7 +29,10 @@ namespace TubeQualityControl_Test.PollData
 
             Debug.WriteLine(_Part);
 
+            service.Stop();
+
             Assert.AreNotEqual(0, _Part.PointCount);
+
             
         }
 
@@ -38,5 +41,8 @@ namespace TubeQualityControl_Test.PollData
             Random random = new Random();
             return random.NextDouble() * (maximum - minimum) + minimum;
         }
+
+        
+
     }
 }

@@ -8,13 +8,13 @@ namespace TubeQualityControl_Test
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void GetMaxId_NotEqualsZero()
         {
             TubeQualityControl.DbHandler.DbHandler db = new DbHandler();
 
             int id = db.Find_Max_Id();
 
-            Assert.Equals(id, 8);
+            Assert.AreNotEqual(0, id);
         }
     }
 }

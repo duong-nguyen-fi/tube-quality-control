@@ -13,8 +13,9 @@ namespace TubeQualityControl.Octave
             //var myFile = TubeQualityControl.Properties.Resources.joj_C4566ETP12BAREN_20180914;
             System.Diagnostics.Process process = new System.Diagnostics.Process();
             System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
-            startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Minimized;
+            startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
             startInfo.WorkingDirectory = @"D:\Temp";
+            startInfo.CreateNoWindow = true;
             startInfo.FileName = Properties.Settings.Default.Octave_Path;
             //startInfo.Arguments = "joj_C4566ETP12BAREN_20180914(2)";
             //startInfo.FileName = @"cmd";

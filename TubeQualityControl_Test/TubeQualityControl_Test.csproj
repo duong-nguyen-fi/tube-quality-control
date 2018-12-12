@@ -53,7 +53,8 @@
     <Compile Include="Database\DbServiceTest.cs" />
     <Compile Include="Octave\InvokeTest.cs" />
     <Compile Include="PollData\Poll_New_Data.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Database\MaxId.cs" />
+    <Compile Include="PollData\NewData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -24,7 +24,7 @@ namespace TubeQualityControl.Entity
 
         public override string ToString()
         {
-            return X.ToString() + Y.ToString() + Z.ToString();
+            return X.ToString() +" --- " + Y.ToString() + " --- " + Z.ToString();
         }
 
         public string Time_Stamp { set; get; }

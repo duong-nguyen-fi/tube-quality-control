@@ -32,7 +32,7 @@ namespace TubeQualityControl.Forms
             InitializeComponent();
 
             partNum = 0;
-            _Part = new Part(6, "PLANE"+partNum,3);
+            _Part = new Part(6, "PLANE"+partNum,6);
             lbDes.Text = description;
             lbSuggest.Text ="/"+_Part.SuggestPoints ;
         }
@@ -75,7 +75,7 @@ namespace TubeQualityControl.Forms
             {
                 if (serviceFlag)
                 {
-                    newPoint = _Part.AddPoint(new MeasurePoint(GetRandomNumber(29.12, 120.12), GetRandomNumber(29.12, 120.12), GetRandomNumber(29.12, 120.12)));
+                    newPoint = _Part.AddPoint(Service.GetNewPoint());
                     lbActual.Invoke(new Action(() => lbActual.Text = _Part.PointCount.ToString()));
                 }
             };

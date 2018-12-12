@@ -68,7 +68,7 @@ namespace TubeQualityControl
 
             if (selection.Equals("Pipe"))
             {
-                Part part5 = new Part(6, "PIPE", 3);
+                Part part5 = new Part(6, "PIPE", 6);
                 iniParts.Add(part5);
                 measureFrm1 = new MeasureFrm(part5.Name, part5);
                 measureFrm1.NextBtnHandler += MeasureFrm1_NextBtnHandler;
@@ -110,6 +110,7 @@ namespace TubeQualityControl
             Octave.OctaveHandler.Invoke();
         }
 
+        // create planemeasurefrm here
         private void PlaneAB_NextBtnHandler(object sender, EventArgs e)
         {
             var planeAb = sender as PlaneAorB;
@@ -118,6 +119,12 @@ namespace TubeQualityControl
             Debug.WriteLine("Selection: " + selection);
 
             var planMeasureFrm = new PlaneMeasureFrm("MEASURE PARTS");
+            planMeasureFrm.OnFinishHandler += (sende, evt) =>
+            {
+                planMeasureFrm.Service.Stop();
+                Finish();
+            };
+
 
             panel1.Controls.Remove(sender as UserControl);
             panel1.Controls.Add(planMeasureFrm);
@@ -125,6 +132,7 @@ namespace TubeQualityControl
 
         }
 
+        // measureFrm next button
         private void MeasureFrm1_NextBtnHandler(object sender, EventArgs e)
         {
             var oldFrm = sender as MeasureFrm;

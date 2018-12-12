@@ -118,7 +118,7 @@ namespace TubeQualityControl.Forms
             {
                 if (serviceFlag)
                 {
-                    newPoint = _Part.AddPoint(new MeasurePoint(GetRandomNumber(29.12, 120.12), GetRandomNumber(29.12, 120.12), GetRandomNumber(29.12, 120.12)));
+                    newPoint = _Part.AddPoint(Service.GetNewPoint());
                     lbActual.Invoke(new Action(() => lbActual.Text = _Part.PointCount.ToString()));
                 }
             };

@@ -53,6 +53,14 @@ namespace TubeQualityControl.DbHandler
             aTimer.Enabled = false;
         }
 
+        public MeasurePoint GetNewPoint()
+        {
+            Stop();
+            var point = db.GetLatestMeasurePoint();
+            Start();
+            return point;
+        }
+
 
     }
 }
