@@ -9,48 +9,40 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TubeQualityControl.Entity;
 using System.Diagnostics;
+using TubeQualityControl.DbHandler;
 
 namespace TubeQualityControl.Forms
 {
     public partial class PlaneMeasureFrm : UserControl
     {
+        public event EventHandler OnFinishHandler;
+
         public Part _Part { get; set; }
 
-        public PlaneMeasureFrm(string description, Part part)
+        private int partNum;
+
+        public DbService Service;
+
+        bool serviceFlag = false;
+
+        public List<Part> Parts = new List<Part>();
+
+        public PlaneMeasureFrm(string description)
         {
             InitializeComponent();
-            _Part = part;
+
+            partNum = 0;
+            _Part = new Part(6, "PLANE"+partNum,3);
             lbDes.Text = description;
+            lbSuggest.Text ="/"+_Part.SuggestPoints ;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Finished");
-            var part1 = new Entity.Part(6, "PLNA",3);
-            var point1 = new Entity.MeasurePoint(12, 52, 22);
-            var point2 = new Entity.MeasurePoint(32, 59, 222);
-            var point3 = new Entity.MeasurePoint(120, 124, 233);
+            if (OnFinishHandler != null)
+                OnFinishHandler(this, e);
 
-            List<Entity.MeasurePoint> points = new List<Entity.MeasurePoint>() { point1, point2, point3 };
-            part1.MeasurePoints = points;
-
-
-            var part2 = new Entity.Part(6, "PLNB", 3);
-
-            List<Entity.MeasurePoint> points1 = new List<Entity.MeasurePoint>() { point1, point2};
-            part2.MeasurePoints = points1;
-
-
-            List<Entity.Part> parts = new List<Entity.Part>() { part1, part2 };
-
-            
-
-            foreach (var point in part1.MeasurePoints)
-
-                Debug.WriteLine(point);
-
-            XmlHandler.XmlWriter.WriteXml(parts);
-            Octave.OctaveHandler.Invoke();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -64,6 +56,44 @@ namespace TubeQualityControl.Forms
             }
         }
 
+        protected override void OnLoad(EventArgs e)
+        {
+            Start_Service();
+            lbActual.Text = _Part.PointCount + "";
+            
+            
+        }
+
+
+        private void Start_Service()
+        {
+            bool newPoint = false;
+            serviceFlag = true;
+            Service = new DbService();
+            Service.Start();
+            Service.NewDataReceived += (sender, e) =>
+            {
+                if (serviceFlag)
+                {
+                    newPoint = _Part.AddPoint(new MeasurePoint(GetRandomNumber(29.12, 120.12), GetRandomNumber(29.12, 120.12), GetRandomNumber(29.12, 120.12)));
+                    lbActual.Invoke(new Action(() => lbActual.Text = _Part.PointCount.ToString()));
+                }
+            };
+        }
+
+
+        Random random = new Random(); // replace from new Random(DateTime.Now.Ticks.GetHashCode());
+        // Since similar code is done in default constructor internally
+        List<double> randomList = new List<double>();
+
+        private double GetRandomNumber(double minimum, double maximum)
+        {
+            double num = random.NextDouble() * (maximum - minimum) + minimum;
+            if (!randomList.Contains(num))
+                randomList.Add(num);
+
+            return num;
+        }
 
     }
 }

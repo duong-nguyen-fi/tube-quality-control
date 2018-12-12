@@ -17,9 +17,11 @@ namespace TubeQualityControl.Forms
     {
         public event EventHandler NextBtnHandler;
 
+        public event EventHandler OnFinishedHandler;
+
         public Part _Part { get; set; }
 
-        DbService service;
+        public DbService Service;
 
         bool serviceFlag = false;
 
@@ -66,8 +68,12 @@ namespace TubeQualityControl.Forms
         {
             MessageBox.Show("Finished");
             serviceFlag = false;
-        }
 
+            if (OnFinishedHandler != null)
+                this.OnFinishedHandler(this, e);
+        }
+        
+        //next button
         private void button2_Click(object sender, EventArgs e)
         {
             serviceFlag = false;
@@ -77,6 +83,7 @@ namespace TubeQualityControl.Forms
                 this.NextBtnHandler(this, e);
         }
 
+        //reset button
         private void button1_Click(object sender, EventArgs e)
         {
             DialogResult dr = MessageBox.Show("RESET?", "WARNING", MessageBoxButtons.YesNo,
@@ -105,9 +112,9 @@ namespace TubeQualityControl.Forms
         {
             bool newPoint = false;
             serviceFlag = true;
-            service = new DbService();
-            service.Start();
-            service.NewDataReceived += (sender, e) =>
+            Service = new DbService();
+            Service.Start();
+            Service.NewDataReceived += (sender, e) =>
             {
                 if (serviceFlag)
                 {
@@ -115,8 +122,6 @@ namespace TubeQualityControl.Forms
                     lbActual.Invoke(new Action(() => lbActual.Text = _Part.PointCount.ToString()));
                 }
             };
-
-            
         }
     }
 }

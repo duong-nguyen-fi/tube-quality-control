@@ -48,10 +48,10 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::TubeQualityControl.Properties.Resources.pipe;
-            this.pictureBox1.Location = new System.Drawing.Point(227, 109);
+            this.pictureBox1.Image = global::TubeQualityControl.Properties.Resources.pipe_small_hole;
+            this.pictureBox1.Location = new System.Drawing.Point(185, 69);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(313, 153);
+            this.pictureBox1.Size = new System.Drawing.Size(383, 324);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
