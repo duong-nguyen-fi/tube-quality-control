@@ -4,5 +4,11 @@
   <part name="PHOLEA" />
   <part name="PLNB" />
   <part name="PHOLEB" />
-  <part name="PIPE" />
+  <part name="PIPE">
+    <point>
+      <X>0.997142238528177</X>
+      <Y>1.21213146806512</Y>
+      <Z>0.943010437158792</Z>
+    </point>
+  </part>
 </data>

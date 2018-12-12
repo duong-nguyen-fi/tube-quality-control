@@ -66,7 +66,6 @@ namespace TubeQualityControl.Forms
 
         private void BtnFinish_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Finished");
             serviceFlag = false;
 
             if (OnFinishedHandler != null)

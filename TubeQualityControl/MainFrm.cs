@@ -26,9 +26,9 @@ namespace TubeQualityControl
         {
             InitializeComponent();
             CurrentDir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
-            Part part1 = new Part(1,"PLNA", 3);
+            Part part1 = new Part(1,"PLNA", 6);
             Part part2 = new Part(2,"PHOLEA", 3);
-            Part part3 = new Part(3,"PLNB", 3);
+            Part part3 = new Part(3,"PLNB", 6);
             Part part4 = new Part(4,"PHOLEB", 3);
 
             iniParts = new List<Part> {part1, part2, part3, part4};
@@ -68,7 +68,7 @@ namespace TubeQualityControl
 
             if (selection.Equals("Pipe"))
             {
-                Part part5 = new Part(6, "PIPE", 6);
+                Part part5 = new Part(6, "PIPE", 10);
                 iniParts.Add(part5);
                 measureFrm1 = new MeasureFrm(part5.Name, part5);
                 measureFrm1.NextBtnHandler += MeasureFrm1_NextBtnHandler;
@@ -92,22 +92,62 @@ namespace TubeQualityControl
             }
         }
 
+
+        private bool finished = false;
+        List<Part> AllParts = new List<Part>();
         private void Finish()
         {
-            // add all parts to list
-            List<Part> AllParts = new List<Part>();
-            foreach (var pair in formDictionary)
+            if (!finished)
             {
-                if (pair.Value is MeasureFrm)
+                // add all parts to list
+                foreach (var pair in formDictionary)
                 {
-                    var part = (pair.Value as MeasureFrm)._Part;
-                    AllParts.Add(part);
+                    if (pair.Value is MeasureFrm)
+                    {
+                        var part = (pair.Value as MeasureFrm)._Part;
+                        AllParts.Add(part);
+                    }
+
+                    if (pair.Value is PlaneMeasureFrm)
+                    {
+                        var form = (pair.Value as PlaneMeasureFrm);
+                        foreach (var part in form.Parts)
+                        {
+                            AllParts.Add(part);
+                            Debug.WriteLine("Adding {0} in PlaneForm", part.Name);
+                        }
+                    }
+                }
+
+                finished = true;
+            }
+            // after upper block finish = true
+            if (finished){
+                //write xml
+                XmlHandler.XmlWriter.WriteXml(AllParts);
+                //run Octave
+                Octave.OctaveHandler.Invoke();
+
+                DialogResult dr = MessageBox.Show("Measurement finished", "Do you want to run again?", MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
+
+                if (dr == DialogResult.Yes)
+                {
+                    Application.Restart();
+                    Environment.Exit(0);
+                }
+                if (dr == DialogResult.No)
+                {
+                    
+                    this.Close();
+
                 }
             }
-            //write xml
-            XmlHandler.XmlWriter.WriteXml(AllParts);
-            //run Octave
-            Octave.OctaveHandler.Invoke();
+
+
+            
+
+            
         }
 
         // create planemeasurefrm here
@@ -119,6 +159,7 @@ namespace TubeQualityControl
             Debug.WriteLine("Selection: " + selection);
 
             var planMeasureFrm = new PlaneMeasureFrm("MEASURE PARTS");
+            formDictionary.Add(6,planMeasureFrm);
             planMeasureFrm.OnFinishHandler += (sende, evt) =>
             {
                 planMeasureFrm.Service.Stop();

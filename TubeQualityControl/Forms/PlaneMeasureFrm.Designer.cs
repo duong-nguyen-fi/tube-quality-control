@@ -38,8 +38,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.partCountTxt = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -115,6 +114,7 @@
             this.button2.TabIndex = 6;
             this.button2.Text = "Next";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label3
             // 
@@ -140,32 +140,21 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.partCountTxt);
             this.panel2.Location = new System.Drawing.Point(577, 109);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(135, 101);
             this.panel2.TabIndex = 5;
             // 
-            // label1
+            // partCountTxt
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(49, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 63);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "/3";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 23);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 63);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "1";
+            this.partCountTxt.AutoSize = true;
+            this.partCountTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.partCountTxt.Location = new System.Drawing.Point(36, 23);
+            this.partCountTxt.Name = "partCountTxt";
+            this.partCountTxt.Size = new System.Drawing.Size(57, 63);
+            this.partCountTxt.TabIndex = 3;
+            this.partCountTxt.Text = "1";
             // 
             // label4
             // 
@@ -214,8 +203,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label partCountTxt;
         private System.Windows.Forms.Label label4;
     }
 }

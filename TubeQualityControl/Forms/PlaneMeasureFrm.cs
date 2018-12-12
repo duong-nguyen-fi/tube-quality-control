@@ -31,15 +31,16 @@ namespace TubeQualityControl.Forms
         {
             InitializeComponent();
 
-            partNum = 0;
-            _Part = new Part(6, "PLANE"+partNum,6);
+            partNum = 1;
+            _Part = new Part(6, "PLANE"+partNum,3);
             lbDes.Text = description;
             lbSuggest.Text ="/"+_Part.SuggestPoints ;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Finished");
+            Debug.WriteLine("Old part: {0}", _Part);
+            Parts.Add(_Part);
             if (OnFinishHandler != null)
                 OnFinishHandler(this, e);
 
@@ -53,15 +54,14 @@ namespace TubeQualityControl.Forms
             if (dr == DialogResult.Yes)
             {
                 _Part.Reset();
+                lbActual.Text = _Part.PointCount + "";
             }
         }
 
         protected override void OnLoad(EventArgs e)
         {
             Start_Service();
-            lbActual.Text = _Part.PointCount + "";
-            
-            
+            lbActual.Text = _Part.PointCount + "";     
         }
 
 
@@ -95,5 +95,14 @@ namespace TubeQualityControl.Forms
             return num;
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Debug.WriteLine("Old part: {0}", _Part);
+            Parts.Add(_Part);
+            partNum++;
+            partCountTxt.Text = partNum + "";
+            lbActual.Text = "0";
+            _Part = new Part(6, "PLANE" + partNum, 3);
+        }
     }
 }
