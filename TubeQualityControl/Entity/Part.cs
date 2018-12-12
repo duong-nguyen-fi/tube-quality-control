@@ -36,21 +36,27 @@ namespace TubeQualityControl.Entity
             MeasurePoints = new List<MeasurePoint>();
         }
 
-        public override string ToString()
+        public Part(string name, List<MeasurePoint> measurePoints)
         {
-            return String.Format("Name: {0} - Step: {2} - Suggest Point: {3} - Actual Point: {1}",Name,MeasurePoints.Count, Step, SuggestPoints);
-
+            Name = name;
+            MeasurePoints = measurePoints;
         }
 
-        public Part() {
+        public Part()
+        {
             MeasurePoints = new List<MeasurePoint>();
         }
 
+        public override string ToString()
+        {
+            return String.Format("Name: {0} - Step: {2} - Suggest Point: {3} - Actual Point: {1}", Name, MeasurePoints.Count, Step, SuggestPoints);
+
+        }
 
         public void Reset()
         {
             MeasurePoints = new List<MeasurePoint>();
-            
+
         }
 
         public bool AddPoint(MeasurePoint point)
@@ -62,6 +68,17 @@ namespace TubeQualityControl.Entity
             }
 
             return false;
+        }
+
+        public string ponitsToString()
+        {
+            StringBuilder builder = new StringBuilder();
+            foreach (MeasurePoint mp in MeasurePoints)
+            {
+                builder.Append(mp.ToString()).Append("|");
+            }
+            string result = builder.ToString();
+            return Name + result;
         }
 
     }
