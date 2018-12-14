@@ -14,12 +14,23 @@ namespace TubeQualityControl.Entity
 
         public int Step { get; set; }
 
+        public string Description { get; set; }
+
         public int PointCount
         {
             get { return MeasurePoints.Count; }
         }
 
         public List<MeasurePoint> MeasurePoints { get; set; }
+
+        public Part(int step, string name, int suggestPoints, string description)
+        {
+            Step = step;
+            Name = name;
+            SuggestPoints = suggestPoints;
+            Description = description;
+            MeasurePoints = new List<MeasurePoint>();
+        }
 
         public Part(int step, string name, int suggestPoints)
         {

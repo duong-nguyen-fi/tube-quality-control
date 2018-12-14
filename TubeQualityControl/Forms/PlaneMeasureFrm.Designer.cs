@@ -58,11 +58,12 @@
             // lbDes
             // 
             this.lbDes.AutoSize = true;
-            this.lbDes.Location = new System.Drawing.Point(78, 38);
+            this.lbDes.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDes.Location = new System.Drawing.Point(11, 15);
             this.lbDes.Name = "lbDes";
-            this.lbDes.Size = new System.Drawing.Size(60, 13);
+            this.lbDes.Size = new System.Drawing.Size(714, 29);
             this.lbDes.TabIndex = 3;
-            this.lbDes.Text = "Description";
+            this.lbDes.Text = "Measure the bolt holes, take at 3 measurements for each bolt hole";
             // 
             // button1
             // 
@@ -87,7 +88,6 @@
             // 
             // lbSuggest
             // 
-            this.lbSuggest.AutoSize = true;
             this.lbSuggest.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbSuggest.Location = new System.Drawing.Point(49, 23);
             this.lbSuggest.Name = "lbSuggest";
@@ -97,13 +97,13 @@
             // 
             // lbActual
             // 
-            this.lbActual.AutoSize = true;
             this.lbActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbActual.Location = new System.Drawing.Point(3, 23);
             this.lbActual.Name = "lbActual";
             this.lbActual.Size = new System.Drawing.Size(57, 63);
             this.lbActual.TabIndex = 3;
             this.lbActual.Text = "5";
+            this.lbActual.Click += new System.EventHandler(this.lbActual_Click);
             // 
             // button2
             // 
@@ -181,9 +181,9 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "PlaneMeasureFrm";
             this.Size = new System.Drawing.Size(728, 426);
+            this.Load += new System.EventHandler(this.PlaneMeasureFrm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);

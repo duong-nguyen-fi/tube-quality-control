@@ -61,7 +61,10 @@ namespace TubeQualityControl.Forms
         protected override void OnLoad(EventArgs e)
         {
             Start_Service();
-            lbActual.Text = _Part.PointCount + "";     
+
+            //if (_Part.PointCount <= 9)
+                lbActual.Text = _Part.PointCount + "";
+            
         }
 
 
@@ -103,6 +106,16 @@ namespace TubeQualityControl.Forms
             partCountTxt.Text = partNum + "";
             lbActual.Text = "0";
             _Part = new Part(6, "PLANE" + partNum, 3);
+        }
+
+        private void lbActual_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PlaneMeasureFrm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

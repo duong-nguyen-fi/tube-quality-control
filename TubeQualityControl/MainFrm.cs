@@ -26,10 +26,10 @@ namespace TubeQualityControl
         {
             InitializeComponent();
             CurrentDir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
-            Part part1 = new Part(1,"PLNA", 6);
-            Part part2 = new Part(2,"PHOLEA", 3);
-            Part part3 = new Part(3,"PLNB", 6);
-            Part part4 = new Part(4,"PHOLEB", 3);
+            Part part1 = new Part(1,"PLNA", 6, "Measure the first plane (A), take at 6 measurements");
+            Part part2 = new Part(2,"PHOLEA", 3, "Measure the pipe hole, take at 3 measurements");
+            Part part3 = new Part(3,"PLNB", 6, "Measure the first plane (B), take at 6 measurements");
+            Part part4 = new Part(4,"PHOLEB", 3, "Measure the pipe hole, take at 3 measurements");
 
             iniParts = new List<Part> {part1, part2, part3, part4};
 
@@ -47,7 +47,7 @@ namespace TubeQualityControl
             //4 only meant for first 4 steps - use step count as dictionary key
             foreach (var part in iniParts)
             {
-                measureFrm1 = new MeasureFrm(part.Name, part);
+                measureFrm1 = new MeasureFrm(part.Description, part);
                 formDictionary.Add(part.Step,measureFrm1);
                 measureFrm1.NextBtnHandler += MeasureFrm1_NextBtnHandler;
             }
@@ -68,9 +68,9 @@ namespace TubeQualityControl
 
             if (selection.Equals("Pipe"))
             {
-                Part part5 = new Part(6, "PIPE", 10);
+                Part part5 = new Part(6, "PIPE", 9, "Measure the pipe, take at 9 measurements");
                 iniParts.Add(part5);
-                measureFrm1 = new MeasureFrm(part5.Name, part5);
+                measureFrm1 = new MeasureFrm(part5.Description, part5);
                 measureFrm1.NextBtnHandler += MeasureFrm1_NextBtnHandler;
                 measureFrm1.OnFinishedHandler += (sende, evt) =>
                 {
@@ -128,7 +128,7 @@ namespace TubeQualityControl
                 //run Octave
                 Octave.OctaveHandler.Invoke();
 
-                DialogResult dr = MessageBox.Show("Measurement finished", "Do you want to run again?", MessageBoxButtons.YesNo,
+                DialogResult dr = MessageBox.Show("Do you want to run again?", "Measurement finished",  MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning);
 
                 if (dr == DialogResult.Yes)
@@ -143,10 +143,6 @@ namespace TubeQualityControl
 
                 }
             }
-
-
-            
-
             
         }
 

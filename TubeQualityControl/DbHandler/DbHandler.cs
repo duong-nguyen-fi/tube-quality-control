@@ -61,7 +61,6 @@ namespace TubeQualityControl.DbHandler
         public MeasurePoint GetLatestMeasurePoint()
         {
             MeasurePoint point = null;
-            int id = 0;
 
             MySqlConnection conn = new MySqlConnection(connString);
             MySqlCommand cmd = conn.CreateCommand();

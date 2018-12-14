@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TubeQualityControl.Octave;
 namespace TubeQualityControl_Test.Octave
@@ -9,7 +10,11 @@ namespace TubeQualityControl_Test.Octave
         [TestMethod]
         public void TestMethod1()
         {
-            Assert.IsTrue(OctaveHandler.Invoke().Contains(@"D:\Temp"));
+            string output = OctaveHandler.Invoke();
+            
+            Debug.WriteLine(output);
+
+            Assert.AreNotEqual("", output);
         }
     }
 }

@@ -42,9 +42,10 @@
             // lbDes
             // 
             this.lbDes.AutoSize = true;
-            this.lbDes.Location = new System.Drawing.Point(108, 19);
+            this.lbDes.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDes.Location = new System.Drawing.Point(50, 18);
             this.lbDes.Name = "lbDes";
-            this.lbDes.Size = new System.Drawing.Size(60, 13);
+            this.lbDes.Size = new System.Drawing.Size(135, 29);
             this.lbDes.TabIndex = 0;
             this.lbDes.Text = "Description";
             // 
