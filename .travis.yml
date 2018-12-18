@@ -1,6 +1,6 @@
 language: csharp
 solution: TubeQualityControl.sln
 script:
-  dotnet restore
-  dotnet build ./TubeQualityControl
-  dotnet test ./TubeQualityControl_Test
+  - msbuild /p:Configuration=Debug TubeQualityControl.sln
+  - mstest ./TubeQualityControl_Test/bin/Debug/TubeQualityControl_Test.Tests.dll
+  - grep "Test Results" build.log
