@@ -1,2 +1,6 @@
 language: csharp
 solution: TubeQualityControl.sln
+script:
+  dotnet restore
+  dotnet build ./TubeQualityControl
+  dotnet test ./TubeQualityControl_Test
